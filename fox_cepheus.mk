@@ -18,3 +18,6 @@ OF_HIDE_NOTCH := 1
 OF_CLOCK_POS := 1
 OF_ENABLE_LPTOOLS := 1
 OF_USE_LZMA_COMPRESSION := 1
+# DE 鍵の投入後に /data を再 mount すると fscrypt v2 の鍵が失われるため、
+# data/media の準備を鍵の投入より前に行う
+OF_FIX_DECRYPTION_ON_DATA_MEDIA := 1

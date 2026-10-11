@@ -138,6 +138,9 @@ TWRP_INCLUDE_LOGCAT := true
 TARGET_USES_LOGD := true
 TARGET_USES_MKE2FS := true
 TW_EXCLUDE_TWRPAPP := true
+# vendor の fstab.qcom を再解析すると /data が f2fs 定義で上書きされ、
+# ext4 の実体に inlinecrypt が付かず wrapped key が使えなくなる
+TW_SKIP_ADDITIONAL_FSTAB := true
 
 # Hack: prevent anti rollback
 PLATFORM_SECURITY_PATCH := 2127-12-31
