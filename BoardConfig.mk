@@ -153,3 +153,6 @@ BUILD_BROKEN_MISSING_REQUIRED_MODULES := true
 # 復号サービス(qseecomd など)が必要とする system 側ライブラリ
 TARGET_RECOVERY_DEVICE_MODULES += libion
 RECOVERY_LIBRARY_SOURCE_FILES += $(TARGET_OUT_SHARED_LIBRARIES)/libion.so
+# ROM 側でビルドした libdisplayconfig 等が要求する libc++ のシンボルを補う
+TARGET_RECOVERY_DEVICE_MODULES += libcpp_verbose_abort_stub
+RECOVERY_LIBRARY_SOURCE_FILES += $(TARGET_OUT_SHARED_LIBRARIES)/libcpp_verbose_abort_stub.so

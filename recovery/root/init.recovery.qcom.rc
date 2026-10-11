@@ -27,6 +27,10 @@
 
 import /init.recovery.qcom_decrypt.rc
 
+on early-init
+    # libops.so -> libdisplayconfig.qti.so が要求する __libcpp_verbose_abort を補う
+    export LD_PRELOAD /system/lib64/libcpp_verbose_abort_stub.so
+
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
