@@ -38,3 +38,20 @@ on fs
 
 on boot
     setprop sys.usb.config adb
+
+# adb sideload 用の USB 構成。
+# 12.1 の標準は configfs=1 / 旧 android_usb 向けの記述しかなく、
+# この端末では sys.usb.state が sideload にならず待機状態で止まっていた。
+# minadbd が ffs を開いて ffs.ready=1 にした後、adb と同じ構成を作る。
+on property:sys.usb.ffs.ready=1 && property:sys.usb.config=sideload
+    write /config/usb_gadget/g1/configs/b.1/strings/0x409/configuration "adb"
+    rm /config/usb_gadget/g1/configs/b.1/f1
+    rm /config/usb_gadget/g1/configs/b.1/f2
+    rm /config/usb_gadget/g1/configs/b.1/f3
+    rm /config/usb_gadget/g1/configs/b.1/f4
+    rm /config/usb_gadget/g1/configs/b.1/f5
+    write /config/usb_gadget/g1/idVendor 0x18d1
+    write /config/usb_gadget/g1/idProduct 0x4ee7
+    symlink /config/usb_gadget/g1/functions/ffs.adb /config/usb_gadget/g1/configs/b.1/f1
+    write /config/usb_gadget/g1/UDC ${sys.usb.controller}
+    setprop sys.usb.state ${sys.usb.config}
