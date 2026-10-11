@@ -70,6 +70,9 @@ TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/Image.gz
 BOARD_PREBUILT_DTBIMAGE_DIR := $(DEVICE_PATH)/prebuilt/dtbs
+# recovery パーティションから起動する場合、bootloader は recovery 側の dtbo を要求する
+BOARD_INCLUDE_RECOVERY_DTBO := true
+BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/dtbo.img
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := cepheus
