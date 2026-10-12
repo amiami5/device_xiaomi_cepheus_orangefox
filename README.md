@@ -18,10 +18,7 @@ Xiaomi Mi 9 用の TWRP device tree です。
 - バックアップ/リストア(要テスト)
 - USB OTG
 - Android Q 対応
-
-TODO:
-
-- バイブレーション対応
+- バイブレーション
 
 ## ビルド
 

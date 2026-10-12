@@ -18,10 +18,7 @@ Works:
 - Backup/Restore (Needs more testing)
 - USB OTG
 - Android Q Support
-
-TO-DO:
-
-- Vibration support
+- Vibration
 
 ## Compile
 
